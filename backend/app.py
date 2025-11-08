@@ -43,7 +43,7 @@ async def submit_form(data: ApplicationData):
     """
     Принимает данные из формы, сохраняет в БД и отправляет уведомление в Telegram.
     """
-    logging.info(f"Получены данные: {data.dict()}")
+    logging.info(f"Получены данные: {data.model_dump()}")
 
     # 1. Сохранение в базу данных SQLite
     db_path = DATABASE_URL.replace("sqlite:///./", "") # Извлечение пути к файлу БД
