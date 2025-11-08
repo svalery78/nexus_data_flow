@@ -6,6 +6,7 @@ import telegram
 import os
 from dotenv import load_dotenv
 import logging
+from fastapi.middleware.cors import CORSMiddleware # Добавлено
 
 # --- Конфигурация ---
 load_dotenv()
@@ -26,6 +27,15 @@ class ApplicationData(BaseModel):
 # --- Инициализация ---
 app = FastAPI()
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
+
+# Добавление CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Разрешаем все источники для разработки
+    allow_credentials=True,
+    allow_methods=["*"],  # Разрешаем все HTTP методы
+    allow_headers=["*"],  # Разрешаем все заголовки
+)
 
 # --- Эндпоинты ---
 @app.post("/api/submit")
