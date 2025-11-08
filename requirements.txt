@@ -1,5 +1,5 @@
 fastapi
 uvicorn[standard]
-psycopg2-binary
+aiosqlite
 python-telegram-bot
 python-dotenv
